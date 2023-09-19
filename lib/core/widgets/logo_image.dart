@@ -9,7 +9,8 @@ class LogoImage extends StatelessWidget {
   const LogoImage({
     super.key,
     required this.width,
-    required this.height,});
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {

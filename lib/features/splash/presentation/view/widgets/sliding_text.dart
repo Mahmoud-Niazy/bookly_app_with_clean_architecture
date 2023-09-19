@@ -1,4 +1,6 @@
+import 'package:bookly_with_clean_architecture/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/function/navigation.dart';
 import '../../../../../core/utils/styles.dart';
 
 class SlidingText extends StatefulWidget {
@@ -47,10 +49,10 @@ class _SlidingTextState extends State<SlidingText>
     });
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        // navigate(
-        //   context: context,
-        //   page: page,
-        // );
+        navigate(
+          context: context,
+          page: const HomeView(),
+        );
       }
     });
   }
