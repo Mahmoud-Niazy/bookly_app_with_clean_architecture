@@ -13,3 +13,9 @@ navigate({
         ),
   );
 }
+
+navigatePop({
+  required BuildContext context,
+}){
+  Navigator.of(context).pop();
+}

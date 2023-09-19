@@ -7,20 +7,21 @@ class RatingItem extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
+        const Icon(
           Icons.star,
           color: Colors.yellow,
           size: 20,
         ),
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
         Text(
           '4.8',
           style: TextStylesManager.textStyle16,
         ),
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
         Text(
