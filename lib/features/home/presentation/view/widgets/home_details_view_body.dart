@@ -1,5 +1,5 @@
 import 'package:bookly_with_clean_architecture/core/utils/styles.dart';
-import 'package:bookly_with_clean_architecture/core/widgets/rating_item.dart';
+import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/rating_item.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/book_imge.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -47,10 +47,10 @@ class HomeDetailsViewBody extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomButton(
+                  const CustomButton(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
@@ -60,13 +60,14 @@ class HomeDetailsViewBody extends StatelessWidget {
                     labelColor: Colors.black,
                   ),
                   CustomButton(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(20),
                       bottomLeft: Radius.circular(20),
                     ),
-                    color: Color(0XFFEF8262),
+                    color: const Color(0XFFEF8262),
                     label: 'Free Preview',
                     labelColor: Colors.white,
+                    onPressed: (){},
                   ),
                 ],
               ),
