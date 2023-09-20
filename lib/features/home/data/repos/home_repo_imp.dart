@@ -25,7 +25,7 @@ class HomeRepoImp extends HomeRepo {
       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } catch (error) {
-      return left(Failure());
+      return left(Failure(error.toString()));
     }
   }
 
@@ -41,7 +41,7 @@ class HomeRepoImp extends HomeRepo {
       return right(books);
     }
     catch (error) {
-      return left(Failure());
+      return left(Failure(error.toString()));
     }
   }
 }

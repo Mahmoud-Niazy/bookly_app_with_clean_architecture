@@ -1,1 +1,4 @@
-class Failure{}
+class Failure{
+  final String errorMessage ;
+  Failure(this.errorMessage);
+}
