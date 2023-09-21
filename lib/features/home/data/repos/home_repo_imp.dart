@@ -1,4 +1,5 @@
 import 'package:bookly_with_clean_architecture/core/errors/errors.dart';
+import 'package:bookly_with_clean_architecture/core/function/check_internet_connection.dart';
 import 'package:bookly_with_clean_architecture/features/home/data/data_sources/local_data_source/home_local_data_source.dart';
 import 'package:bookly_with_clean_architecture/features/home/data/data_sources/remote_data_source/home_remote_data_source.dart';
 import 'package:bookly_with_clean_architecture/features/home/domain/entities/book_entity.dart';
@@ -19,9 +20,11 @@ class HomeRepoImp extends HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
       List<BookEntity> books = [];
-      books = homeLocalDataSource.fetchFeaturedBooks();
-      if (books.isNotEmpty) {
-        return right(books);
+      if(await isInternetConnected()){
+        books = homeLocalDataSource.fetchFeaturedBooks();
+        if (books.isNotEmpty) {
+          return right(books);
+        }
       }
       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
@@ -39,9 +42,11 @@ class HomeRepoImp extends HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetchNewestBooks()async {
     try {
       List<BookEntity> books =[];
-      books = homeLocalDataSource.fetchNewestBooks();
-      if(books.isNotEmpty){
-        return right(books);
+      if(await isInternetConnected()){
+        books = homeLocalDataSource.fetchNewestBooks();
+        if(books.isNotEmpty){
+          return right(books);
+        }
       }
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
@@ -56,3 +61,6 @@ class HomeRepoImp extends HomeRepo {
     }
   }
 }
+
+
+

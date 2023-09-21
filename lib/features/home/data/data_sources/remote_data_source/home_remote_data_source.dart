@@ -23,7 +23,7 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
       endPoint: EndPoints.fetchFeaturedAndNewestBooksEndPoint,
       query: {
         'Filtering': 'free-ebooks',
-        'q': 'programming',
+        'q': 'Mobile Apps Programming',
       },
     );
     List<BookEntity> books = [];

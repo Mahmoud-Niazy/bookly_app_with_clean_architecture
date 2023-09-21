@@ -61,7 +61,7 @@ class BookItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${book.price} \$',
+                        '${book.price}',
                         style: TextStylesManager.textStyle20,
                       ),
                       RatingItem(

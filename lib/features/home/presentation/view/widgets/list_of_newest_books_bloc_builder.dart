@@ -24,9 +24,17 @@ class ListOfNewestBooksBlocBuilder extends StatelessWidget {
             return ListOfNewestBooks(books: state.books);
           }
           else if(state is FetchNewestBooksErrorState){
-            return Center(
-              child: Text(
-                state.error
+            return SizedBox(
+              height: MediaQuery.of(context).size.height*.4,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      state.error
+                    ),
+                  ),
+                ],
               ),
             );
           }
