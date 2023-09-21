@@ -1,6 +1,8 @@
 import 'package:bookly_with_clean_architecture/core/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/function/navigation.dart';
 import '../../../../../core/widgets/logo_image.dart';
+import '../search_view.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -23,7 +25,12 @@ class CustomAppBar extends StatelessWidget {
           ),
           CustomIconButton(
             icon: Icons.search,
-            onPressed: () {},
+            onPressed: () {
+              navigate(
+                context: context,
+                page: const SearchView(),
+              );
+            },
             size: 25,
           ),
         ],
