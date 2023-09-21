@@ -10,6 +10,8 @@ abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeaturedBooks();
 
   Future<List<BookEntity>> fetchNewestBooks();
+
+  Future<List<BookEntity>> fetchSearchedBooks({required String search});
 }
 
 class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
@@ -47,6 +49,19 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
     saveBooksLocally(books: books, boxName: kNewestBox);
     return books;
   }
+
+  @override
+  Future<List<BookEntity>> fetchSearchedBooks({required String search}) async{
+    var data = await apiServices.getData(
+      endPoint: EndPoints.fetchFeaturedAndNewestBooksEndPoint,
+      query: {
+        'q' : search,
+      }
+    );
+    List<BookEntity> books =[];
+    fetchBooks(data: data, books: books);
+    return books;
+  }
 }
 
 fetchBooks({
@@ -57,5 +72,3 @@ fetchBooks({
     books.add(BookModel.fromJson(book));
   }
 }
-
-

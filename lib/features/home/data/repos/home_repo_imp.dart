@@ -60,6 +60,23 @@ class HomeRepoImp extends HomeRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<BookEntity>>> fetchSearchedBooks({required String search})async {
+    try{
+      List<BookEntity> books =[] ;
+      books = await homeRemoteDataSource.fetchSearchedBooks(search: search);
+      return right(books);
+    }
+        catch(error){
+      if(error is DioException){
+        return left(ServerFailure.fromDioException(error));
+      }
+      else{
+        return left(ServerFailure(error.toString()));
+      }
+        }
+  }
 }
 
 
