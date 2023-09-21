@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/assets.dart';
 
-class BookImage extends StatelessWidget{
-  const BookImage({super.key});
+class BookImage extends StatelessWidget {
+  final String image;
+
+  const BookImage({
+    super.key,
+    required this.image
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +15,10 @@ class BookImage extends StatelessWidget{
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: AspectRatio(
-          aspectRatio: 2/3.5,
+          aspectRatio: 2 / 3.5,
           child: SizedBox(
-            child: Image.asset(
-              AssetsManager.uiTestImage,
+            child: Image.network(
+              image,
               fit: BoxFit.cover,
             ),
           ),

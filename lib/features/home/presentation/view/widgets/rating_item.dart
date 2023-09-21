@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 
-class RatingItem extends StatelessWidget{
-  const RatingItem({super.key});
+class RatingItem extends StatelessWidget {
+  final dynamic rate;
+
+  const RatingItem({
+    super.key,
+    required this.rate,
+  });
 
   @override
   Widget build(BuildContext context) {

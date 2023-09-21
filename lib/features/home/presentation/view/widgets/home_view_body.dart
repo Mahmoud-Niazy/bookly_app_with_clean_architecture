@@ -1,7 +1,7 @@
 import 'package:bookly_with_clean_architecture/core/utils/styles.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/custom_app_bar.dart';
-import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/list_of_featured_books.dart';
-import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/list_of_newest_books.dart';
+import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/list_of_featured_books_bloc_builder.dart';
+import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/list_of_newest_books_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -15,7 +15,7 @@ class HomeViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const CustomAppBar(),
-          const ListOfFeaturedBooks(),
+          const ListOfFeaturedBooksBlocBuilder(),
           const SizedBox(
             height: 20,
           ),
@@ -29,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          const ListOfNewestBooks(),
+          const ListOfNewestBooksBlocBuilder(),
         ],
       ),
     );

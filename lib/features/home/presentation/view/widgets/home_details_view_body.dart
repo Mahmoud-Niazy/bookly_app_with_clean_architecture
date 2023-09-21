@@ -3,9 +3,15 @@ import 'package:bookly_with_clean_architecture/features/home/presentation/view/w
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/book_imge.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import '../../../domain/entities/book_entity.dart';
 
 class HomeDetailsViewBody extends StatelessWidget {
-  const HomeDetailsViewBody({super.key});
+  final BookEntity book;
+
+  const HomeDetailsViewBody({
+    super.key,
+    required this.book,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,8 @@ class HomeDetailsViewBody extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 20
+            vertical: 20,
+            horizontal: 20
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,41 +29,47 @@ class HomeDetailsViewBody extends StatelessWidget {
               Center(
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * .4,
-                  child: const BookImage(),
+                  child: BookImage(
+                    image: book.image,
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 30,
               ),
               Text(
-                'The Jungle Book',
+                book.bookName,
                 style: TextStylesManager.textStyle30,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(
                 height: 15,
               ),
               Text(
-                'Rudyard Kipling',
+                book.autherName,
                 style: TextStylesManager.textStyle18
                     .copyWith(color: Colors.grey, fontWeight: FontWeight.w300),
               ),
               const SizedBox(
                 height: 15,
               ),
-              const RatingItem(),
+              RatingItem(
+                rate: book.rate,
+              ),
               const SizedBox(
                 height: 30,
               ),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CustomButton(
-                    borderRadius: BorderRadius.only(
+                  CustomButton(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     ),
                     color: Colors.white,
-                    label: '19.99 \$',
+                    label: '${book.price}',
                     labelColor: Colors.black,
                   ),
                   CustomButton(
@@ -65,9 +78,9 @@ class HomeDetailsViewBody extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                     ),
                     color: const Color(0XFFEF8262),
-                    label: 'Free Preview',
+                    label: 'Preview',
                     labelColor: Colors.white,
-                    onPressed: (){},
+                    onPressed: () {},
                   ),
                 ],
               ),

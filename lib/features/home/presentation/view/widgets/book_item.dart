@@ -1,4 +1,5 @@
 import 'package:bookly_with_clean_architecture/core/function/navigation.dart';
+import 'package:bookly_with_clean_architecture/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/home_details_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
@@ -6,19 +7,28 @@ import 'rating_item.dart';
 import 'book_imge.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+  final BookEntity book;
+
+  const BookItem({
+    super.key,
+    required this.book,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        navigate(context: context, page: const HomeDetailsView());
+      onTap: () {
+        navigate(context: context, page: HomeDetailsView(
+          book: book,
+        ));
       },
       child: SizedBox(
         height: 150,
         child: Row(
           children: [
-            const BookImage(),
+            BookImage(
+              image: book.image,
+            ),
             const SizedBox(
               width: 20,
             ),
@@ -28,7 +38,7 @@ class BookItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Harry Potter and the Goblet of Fire',
+                    book.bookName,
                     style: TextStylesManager.textStyle20.copyWith(
                       fontWeight: FontWeight.w300,
                     ),
@@ -39,7 +49,7 @@ class BookItem extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Rudyard Kipling',
+                    book.autherName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStylesManager.textStyle14,
@@ -51,10 +61,12 @@ class BookItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19.99 \$',
+                        '${book.price} \$',
                         style: TextStylesManager.textStyle20,
                       ),
-                      const RatingItem(),
+                      RatingItem(
+                        rate: book.rate,
+                      ),
                     ],
                   ),
                 ],
