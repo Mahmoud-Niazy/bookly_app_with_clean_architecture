@@ -39,6 +39,7 @@ dependencies:
   get_it: ^7.6.4
   connectivity_plus: any
   url_launcher: ^6.1.14
+  equatable: ^2.0.5
 
 
   # The following adds the Cupertino Icons font to your application.

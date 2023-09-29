@@ -1,8 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'book_entity.g.dart';
 
 @HiveType(typeId: 0)
-class BookEntity {
+class BookEntity extends Equatable{
   @HiveField(0)
   final String image ;
   @HiveField(1)
@@ -16,7 +17,7 @@ class BookEntity {
   @HiveField(5)
   final String url;
 
-  BookEntity({
+  const BookEntity({
     required this.image,
     required this.price,
     required this.bookName,
@@ -24,4 +25,14 @@ class BookEntity {
     required this.rate,
     required this.url,
 });
+
+  @override
+  List<Object?> get props => [
+    image,
+    price,
+    bookName,
+    autherName,
+    rate,
+    url,
+  ];
 }
