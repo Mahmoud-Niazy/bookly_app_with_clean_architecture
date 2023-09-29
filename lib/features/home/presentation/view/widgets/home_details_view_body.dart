@@ -1,3 +1,4 @@
+import 'package:bookly_with_clean_architecture/core/function/launch_url.dart';
 import 'package:bookly_with_clean_architecture/core/utils/styles.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/rating_item.dart';
 import 'package:bookly_with_clean_architecture/features/home/presentation/view/widgets/book_imge.dart';
@@ -80,7 +81,9 @@ class HomeDetailsViewBody extends StatelessWidget {
                     color: const Color(0XFFEF8262),
                     label: 'Preview',
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      launchLink(link: book.url);
+                    },
                   ),
                 ],
               ),

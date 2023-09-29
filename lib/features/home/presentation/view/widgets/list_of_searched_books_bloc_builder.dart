@@ -21,7 +21,7 @@ class ListOfSearchedBooksBlocBuilder extends StatelessWidget {
            state.error
          ));
        }
-       return const Center(child: CircularProgressIndicator());
+       return Center(child: Container());
       },
     );
   }

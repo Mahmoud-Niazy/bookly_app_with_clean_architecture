@@ -13,6 +13,8 @@ class BookEntity {
   final dynamic price ;
   @HiveField(4)
   final dynamic rate ;
+  @HiveField(5)
+  final String url;
 
   BookEntity({
     required this.image,
@@ -20,5 +22,6 @@ class BookEntity {
     required this.bookName,
     required this.autherName,
     required this.rate,
+    required this.url,
 });
 }
